@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyBot extends TelegramLongPollingBot {
-    private static final String username = "@JamaBarberOnlineBot";
-    private static final String token = "5402312380:AAGfO_5Nqirsp-vV3WDzHR00VaC6svUOAjA";
+    private static final String username = "@jjbarberbot";
+    private static final String token = "5680903843:AAE9wm9IEqHnw8ju9ViUjm8D82_wfUkvP-I";
     private static int level = 0;
     private static String service = "";
     private static String date = "";
@@ -441,11 +441,14 @@ public class MyBot extends TelegramLongPollingBot {
         inlineKeyboardButton7.setCallbackData(days.getBooking_dates().get(6));
         keyboardButtonsRow7.add(inlineKeyboardButton7);
 
-        List<InlineKeyboardButton> keyboardButtonsRow8 = new ArrayList<>();
-        InlineKeyboardButton inlineKeyboardButton8 = new InlineKeyboardButton();
-        inlineKeyboardButton8.setText(days.getBooking_dates().get(7));
-        inlineKeyboardButton8.setCallbackData(days.getBooking_dates().get(7));
-        keyboardButtonsRow8.add(inlineKeyboardButton8);
+        if (days.getBooking_dates().size() == 8) {
+            List<InlineKeyboardButton> keyboardButtonsRow8 = new ArrayList<>();
+            InlineKeyboardButton inlineKeyboardButton8 = new InlineKeyboardButton();
+            inlineKeyboardButton8.setText(days.getBooking_dates().get(7));
+            inlineKeyboardButton8.setCallbackData(days.getBooking_dates().get(7));
+            keyboardButtonsRow8.add(inlineKeyboardButton8);
+            rowList.add(keyboardButtonsRow8);
+        }
 
         rowList.add(keyboardButtonsRow1);
         rowList.add(keyboardButtonsRow2);
@@ -454,7 +457,6 @@ public class MyBot extends TelegramLongPollingBot {
         rowList.add(keyboardButtonsRow5);
         rowList.add(keyboardButtonsRow6);
         rowList.add(keyboardButtonsRow7);
-        rowList.add(keyboardButtonsRow8);
 
         inlineKeyboardMarkup.setKeyboard(rowList);
         return inlineKeyboardMarkup;
